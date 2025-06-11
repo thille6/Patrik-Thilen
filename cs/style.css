@@ -533,25 +533,40 @@ body {
     flex-direction: column;
     gap: 2rem;
     padding: 1rem;
+    margin-top: 1rem;
   }
+  
   .about-left, .about-right {
     max-width: 100%;
-    padding: 1rem;
+    padding: 0;
+    margin: 0 auto;
   }
+  
+  .about-left {
+    min-width: 280px;
+    max-width: 400px;
+  }
+  
   .profile-img {
     max-width: 100%;
     height: auto;
     aspect-ratio: 1/1;
   }
+  
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .project-card {
+    margin: 0;
   }
 }
 
 @media (max-width: 700px) {
   html {
-    font-size: 16px; /* Mindre grundtextstorlek på mobil */
+    font-size: 16px;
   }
   
   .navbar { 
@@ -578,50 +593,90 @@ body {
     padding: 1rem;
     margin: 1rem auto 0 auto;
     width: 100%;
+    max-width: 100%;
   }
   
   .about-main {
     gap: 1.2rem;
   }
   
+  .about-right {
+    padding: 1.5rem;
+  }
+  
   .about-right p {
     font-size: 1rem;
     line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+  
+  .about-info {
+    padding: 1.5rem;
+  }
+  
+  .about-info h2 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .title {
+    margin-bottom: 1rem;
   }
   
   .infographic {
     max-width: 100%;
+    margin: 0 auto;
   }
   
   .contact-main {
-    padding: 1rem;
-    margin: 1rem;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .home-main {
+    padding: 2rem 1rem;
   }
   
   .home-main h1 {
     font-size: 2.2rem;
-    padding: 0 1rem;
+    padding: 0;
+    margin-bottom: 1rem;
   }
   
   .subtitle {
     font-size: 1.1rem;
-    padding: 0 1rem;
+    padding: 0;
+    margin-bottom: 2rem;
   }
   
   .project-card {
-    margin: 0 1rem;
+    margin: 0;
   }
   
   .project-content {
-    padding: 1.2rem;
+    padding: 1.5rem;
   }
   
   .project-content h2 {
     font-size: 1.1rem;
+    margin-bottom: 0.5rem;
   }
   
   .project-desc {
     font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project-sections {
+    margin-top: 1rem;
+  }
+  
+  .project-sections strong {
+    margin-top: 1rem;
+  }
+  
+  .project-sections ul {
+    margin: 0.5rem 0 0 1.2rem;
   }
 }
 
@@ -640,11 +695,19 @@ body {
   }
   
   .about-info h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   
   .project-img {
-    height: 200px;
+    height: 180px;
+  }
+  
+  .about-right {
+    padding: 1.2rem;
+  }
+  
+  .project-content {
+    padding: 1.2rem;
   }
 }
 
