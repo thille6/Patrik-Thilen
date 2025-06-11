@@ -5,8 +5,8 @@
     --mobile-primary: #4a67a5; /* lugnande blå */
     --mobile-secondary: #7b97c4; /* mjukare gråblå för accenter */
     --mobile-accent: #61b88e; /* vibrerande men tillgänglig grön */
-    --mobile-background-start: #a8dadc; /* Ljus turkos */
-    --mobile-background-end: #fcc2d7;   /* Ljus rosa */
+    --mobile-background-start: #ffb6c1; /* Ljusrosa */
+    --mobile-background-end: #87ceeb;   /* Ljusblå */
     --mobile-text: #333333; /* mörkgrå text */
     --mobile-text-light: #666666; /* mellangrå text */
     --mobile-border: #e0e0e0; /* ljusgrå kantlinje */
@@ -36,6 +36,19 @@
     --box-shadow-mobile-md: 0 5px 15px rgba(0,0,0,0.15);
 }
 
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+    overflow-x: hidden; /* Förhindra horisontell scroll */
+}
+
+body.menu-active {
+    overflow-y: hidden; /* Förhindrar scroll på body när menyn är aktiv */
+}
+
 /* Basstilar för mobil */
 body {
     font-family: var(--font-family-sans);
@@ -43,9 +56,9 @@ body {
     line-height: var(--line-height-base-mobile);
     color: var(--mobile-text);
     background: linear-gradient(135deg, var(--mobile-background-start), var(--mobile-background-end));
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    padding-top: 60px;
+    background-size: 1200% 1200%; /* Ännu större storlek för tydligare effekt */
+    animation: gradientAnimation 5s ease infinite; /* Ännu snabbare animation */
+    padding-top: 0; /* Tar bort padding-top här */
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -81,7 +94,7 @@ body {
 
 /* Navbar */
 .navbar {
-    position: fixed;
+    position: absolute; /* Ändrad till absolute */
     top: 0;
     left: 0;
     width: 100%;
@@ -92,8 +105,7 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--box-shadow-mobile-sm);
-    z-index: 1000;
-    position: relative;
+    z-index: 1000; /* Säkerställ att navbaren är över allt annat */
 }
 
 .nav-left {
@@ -113,7 +125,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 9999; /* Aggressivt högt z-index */
+    z-index: 10000; /* Högst z-index för att vara klickbar */
     position: absolute;
     right: var(--spacing-sm-mobile);
     top: 50%;
@@ -136,25 +148,32 @@ body {
 
 .nav-menu {
     position: fixed;
-    top: 60px;
-    right: 0;
-    width: 85%;
+    top: 0;
+    left: 0;
+    width: 100%;
     max-width: 350px;
-    height: calc(100% - 60px);
+    height: 100vh;
     background-color: var(--mobile-primary);
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: -4px 0 10px rgba(0,0,0,0.3);
-    padding-top: var(--spacing-lg-mobile);
-    z-index: 999; /* Se till att menyn är över innehållet men under hamburger */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+    padding-top: 60px;
+    z-index: 9999; /* Högre än overlay, lägre än hamburger */
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    box-sizing: border-box;
 }
 
 .nav-menu.active {
     transform: translateX(0);
+    z-index: 9999; /* Säkerställ att menyn är över hamburger när aktiv */
+    opacity: 1; /* Säkerställ synlighet */
+    visibility: visible; /* Säkerställ synlighet */
+    border: 2px solid yellow; /* TEMP: Tydlig gul ram för felsökning */
 }
 
 .nav-menu .nav-right {
@@ -193,6 +212,7 @@ main {
     padding: var(--spacing-lg-mobile) var(--spacing-md-mobile);
     max-width: 100%;
     box-sizing: border-box;
+    margin-top: 60px; /* Lägg till margin-top för att kompensera för navbar */
 }
 
 h1,
@@ -200,7 +220,7 @@ h2,
 h3 {
     color: var(--mobile-primary);
     margin-bottom: var(--spacing-md-mobile);
-    text-align: center;
+    text-align: left; /* Ändrat från center till left för bättre läsbarhet på mobil */
     line-height: 1.2;
     word-break: break-word;
 }
@@ -450,4 +470,47 @@ img {
     0% { transform: scale(1); }
     50% { transform: scale(1.03); }
     100% { transform: scale(1); }
+}
+
+/* Process-sida specifika justeringar för listor */
+ul {
+    list-style: disc;
+    margin-left: var(--spacing-md-mobile);
+    padding: 0;
+}
+
+li {
+    margin-bottom: var(--spacing-sm-mobile);
+    line-height: 1.6;
+    text-align: left;
+    color: var(--mobile-text);
+}
+
+li strong {
+    display: inline;
+}
+
+.process-main .process-step h2 {
+    text-align: left; /* Behåll vänsterjustering för process-steg rubriker */
+    font-size: var(--font-size-h2-mobile);
+    color: var(--mobile-primary);
+}
+
+/* Overlay för menyn */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Mörk transparent bakgrund */
+    z-index: 9997; /* Under hamburger menyn och nav-menu */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 } 

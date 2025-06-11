@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
+            // Lägg till/ta bort active-klass på overlay och body
+            const menuOverlay = document.querySelector('.menu-overlay');
+            if (menuOverlay) {
+                menuOverlay.classList.toggle('active');
+            }
+            document.body.classList.toggle('menu-active');
         });
 
         // Close menu when a nav link is clicked
@@ -28,6 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
+                // Ta bort active-klass från overlay och body när en länk klickas
+                const menuOverlay = document.querySelector('.menu-overlay');
+                if (menuOverlay) {
+                    menuOverlay.classList.remove('active');
+                }
+                document.body.classList.remove('menu-active');
             });
         });
     }
