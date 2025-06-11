@@ -5,8 +5,8 @@
     --mobile-primary: #4a67a5; /* lugnande blå */
     --mobile-secondary: #7b97c4; /* mjukare gråblå för accenter */
     --mobile-accent: #61b88e; /* vibrerande men tillgänglig grön */
-    --mobile-background-start: #d3f9e0; /* Lätt mintgrön */
-    --mobile-background-end: #e0e0ff;   /* Lätt lavendelblå */
+    --mobile-background-start: #a8dadc; /* Ljus turkos */
+    --mobile-background-end: #fcc2d7;   /* Ljus rosa */
     --mobile-text: #333333; /* mörkgrå text */
     --mobile-text-light: #666666; /* mellangrå text */
     --mobile-border: #e0e0e0; /* ljusgrå kantlinje */
@@ -113,11 +113,12 @@ body {
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 9999;
+    z-index: 9999; /* Aggressivt högt z-index */
     position: absolute;
     right: var(--spacing-sm-mobile);
     top: 50%;
     transform: translateY(-50%);
+    outline: none; /* Ta bort standard outline vid fokus */
 }
 
 .hamburger .bar {
@@ -145,7 +146,7 @@ body {
     transition: transform 0.3s ease-in-out;
     box-shadow: -4px 0 10px rgba(0,0,0,0.3);
     padding-top: var(--spacing-lg-mobile);
-    z-index: 999;
+    z-index: 999; /* Se till att menyn är över innehållet men under hamburger */
     display: flex;
     flex-direction: column;
     align-items: center;
