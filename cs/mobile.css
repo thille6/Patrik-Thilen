@@ -5,8 +5,8 @@
     --mobile-primary: #4a67a5; /* lugnande blå */
     --mobile-secondary: #7b97c4; /* mjukare gråblå för accenter */
     --mobile-accent: #61b88e; /* vibrerande men tillgänglig grön */
-    --mobile-background-start: #e0f2f7; /* Lätt blå */
-    --mobile-background-end: #fce4ec;   /* Lätt rosa */
+    --mobile-background-start: #d3f9e0; /* Lätt mintgrön */
+    --mobile-background-end: #e0e0ff;   /* Lätt lavendelblå */
     --mobile-text: #333333; /* mörkgrå text */
     --mobile-text-light: #666666; /* mellangrå text */
     --mobile-border: #e0e0e0; /* ljusgrå kantlinje */
@@ -15,11 +15,11 @@
 
     /* Typografi */
     --font-family-sans: 'Inter', sans-serif;
-    --font-size-base-mobile: 18px; /* Ökat till 18px för bättre läsbarhet */
-    --line-height-base-mobile: 1.8; /* Ökat radavstånd för generell text */
-    --font-size-h1-mobile: 2.5em; /* Justerad storlek för impact */
-    --font-size-h2-mobile: 1.9em; /* Justerad storlek för läsbarhet */
-    --font-size-h3-mobile: 1.5em; /* Justerad storlek för tydlighet */
+    --font-size-base-mobile: 18px;
+    --line-height-base-mobile: 1.8;
+    --font-size-h1-mobile: 2.5em;
+    --font-size-h2-mobile: 1.9em;
+    --font-size-h3-mobile: 1.5em;
 
     /* Avstånd och mellanrum */
     --spacing-xs-mobile: 5px;
@@ -93,7 +93,7 @@ body {
     align-items: center;
     box-shadow: var(--box-shadow-mobile-sm);
     z-index: 1000;
-    position: relative; /* Lägg till relative position för absolut hamburgare */
+    position: relative;
 }
 
 .nav-left {
@@ -107,17 +107,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 55px; /* Ytterligare större touch-yta */
-    height: 50px; /* Ytterligare större touch-yta */
+    width: 55px;
+    height: 50px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 10px; /* Mer padding för klickarea */
-    z-index: 9999; /* Aggressivt högt z-index */
-    position: absolute; /* Använd absolut positionering i förhållande till navbar */
-    right: var(--spacing-sm-mobile); /* Flytta in från högerkanten */
-    top: 50%; /* Centrera vertikalt */
-    transform: translateY(-50%); /* Justera för exakt vertikal centrering */
+    padding: 10px;
+    z-index: 9999;
+    position: absolute;
+    right: var(--spacing-sm-mobile);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .hamburger .bar {
@@ -129,9 +129,9 @@ body {
 }
 
 /* Hamburger animation */
-.hamburger.open .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-.hamburger.open .bar:nth-child(2) { opacity: 0; }
-.hamburger.open .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+.hamburger.active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+.hamburger.active .bar:nth-child(2) { opacity: 0; }
+.hamburger.active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
 .nav-menu {
     position: fixed;
@@ -152,7 +152,7 @@ body {
     overflow-y: auto;
 }
 
-.nav-menu.open {
+.nav-menu.active {
     transform: translateX(0);
 }
 
@@ -166,7 +166,7 @@ body {
 
 .nav-menu .nav-link {
     display: block;
-    padding: var(--spacing-md-mobile) var(--spacing-lg-mobile); /* Justerad padding */
+    padding: var(--spacing-md-mobile) var(--spacing-lg-mobile);
     color: var(--mobile-white);
     text-decoration: none;
     font-size: 1.15em;
@@ -190,7 +190,7 @@ body {
 /* Huvudinnehåll-sektioner */
 main {
     padding: var(--spacing-lg-mobile) var(--spacing-md-mobile);
-    max-width: 100%; /* Fortsätter med 100% bredd, padding hanterar insidan */
+    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -224,8 +224,8 @@ p {
     margin-bottom: var(--spacing-md-mobile);
     text-align: left;
     color: var(--mobile-text);
-    line-height: 1.75; /* Ytterligare ökat radavstånd för bättre läsbarhet */
-    font-size: 1.05em; /* Något större generell textstorlek */
+    line-height: 1.75;
+    font-size: 1.05em;
 }
 
 /* Home Page Specific */
@@ -325,15 +325,15 @@ p {
 
 .project-card img {
     width: 100%;
-    height: auto; /* Låt bilden bestämma sin egen höjd */
-    max-height: 300px; /* Ökad maxhöjd */
+    height: auto;
+    max-height: 300px;
     object-fit: contain;
     background-color: var(--mobile-background-start);
     border-bottom: 1px solid var(--mobile-border);
 }
 
 .project-card-content {
-    padding: var(--spacing-md-mobile) var(--spacing-md-mobile); /* Mer padding för texten */
+    padding: var(--spacing-md-mobile) var(--spacing-md-mobile);
 }
 
 .project-card h3 {
@@ -345,7 +345,7 @@ p {
 }
 
 .project-card p {
-    font-size: 1em; /* Standardstorlek för brödtext i kort för läsbarhet */
+    font-size: 1em;
     color: var(--mobile-text-light);
     margin-bottom: var(--spacing-md-mobile);
     text-align: left;
