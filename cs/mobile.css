@@ -5,7 +5,8 @@
     --mobile-primary: #4a67a5; /* lugnande blå */
     --mobile-secondary: #7b97c4; /* mjukare gråblå för accenter */
     --mobile-accent: #61b88e; /* vibrerande men tillgänglig grön */
-    --mobile-background: #f9f9f9; /* väldigt ljus grå/off-white */
+    --mobile-background-start: #e0f2f7; /* Lätt blå */
+    --mobile-background-end: #fce4ec;   /* Lätt rosa */
     --mobile-text: #333333; /* mörkgrå text */
     --mobile-text-light: #666666; /* mellangrå text */
     --mobile-border: #e0e0e0; /* ljusgrå kantlinje */
@@ -14,11 +15,11 @@
 
     /* Typografi */
     --font-family-sans: 'Inter', sans-serif;
-    --font-size-base-mobile: 16px;
-    --line-height-base-mobile: 1.65; /* Lätt ökat radavstånd för generell text */
-    --font-size-h1-mobile: 2.3em; /* Något större för impact */
-    --font-size-h2-mobile: 1.7em; /* Något större för läsbarhet */
-    --font-size-h3-mobile: 1.3em; /* Något större för tydlighet */
+    --font-size-base-mobile: 17px; /* Ökat till 17px för bättre läsbarhet */
+    --line-height-base-mobile: 1.7; /* Ökat radavstånd för generell text */
+    --font-size-h1-mobile: 2.4em; /* Justerad storlek för impact */
+    --font-size-h2-mobile: 1.8em; /* Justerad storlek för läsbarhet */
+    --font-size-h3-mobile: 1.4em; /* Justerad storlek för tydlighet */
 
     /* Avstånd och mellanrum */
     --spacing-xs-mobile: 5px;
@@ -41,11 +42,19 @@ body {
     font-size: var(--font-size-base-mobile);
     line-height: var(--line-height-base-mobile);
     color: var(--mobile-text);
-    background-color: var(--mobile-background);
+    background: linear-gradient(135deg, var(--mobile-background-start), var(--mobile-background-end)); /* Animerad gradientbakgrund */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     padding-top: 60px;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Tillgänglighet: Hoppa till huvudinnehåll-länk */
@@ -97,16 +106,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 40px;
-    height: 35px;
+    width: 44px; /* Större touch-yta */
+    height: 40px; /* Större touch-yta */
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0; /* Tar bort padding för att fokusera på width/height */
+    padding: 0; /* padding är inte nödvändig när width/height är stor */
     z-index: 1001;
-    position: relative;
-    right: 0; /* Säkerställ att det inte finns någon negativ marginal */
-    margin-right: var(--spacing-sm-mobile); /* Lägg till en liten marginal för att flytta in den från kanten */
+    position: absolute; /* Använd absolut positionering i förhållande till navbar */
+    right: var(--spacing-md-mobile); /* Flytta in från högerkanten */
+    top: 50%; /* Centrera vertikalt */
+    transform: translateY(-50%); /* Justera för exakt vertikal centrering */
 }
 
 .hamburger .bar {
@@ -211,10 +221,10 @@ h3 {
 
 p {
     margin-bottom: var(--spacing-md-mobile);
-    text-align: left; /* Generell vänsterjustering för brödtext */
+    text-align: left;
     color: var(--mobile-text);
-    line-height: 1.65;
-    font-size: 1em;
+    line-height: 1.75; /* Ytterligare ökat radavstånd för bättre läsbarhet */
+    font-size: 1.05em; /* Något större generell textstorlek */
 }
 
 /* Home Page Specific */
@@ -227,7 +237,7 @@ p {
 }
 
 .home-main h1 {
-    font-size: 2.5em;
+    font-size: 2.6em; /* Justerad storlek för balans */
     margin-bottom: var(--spacing-sm-mobile);
     animation: fadeIn 0.8s ease-out forwards;
     animation-delay: 0.1s;
@@ -235,7 +245,7 @@ p {
 }
 
 .subtitle {
-    font-size: 1.05em;
+    font-size: 1.1em; /* Justerad storlek för tydlighet */
     color: var(--mobile-text-light);
     margin-bottom: var(--spacing-lg-mobile);
     padding: 0 var(--spacing-sm-mobile);
@@ -314,9 +324,9 @@ p {
 
 .project-card img {
     width: 100%;
-    height: 180px; /* Något mindre höjd för att spara utrymme */
+    height: 280px; /* Ytterligare ökad höjd för att bilden ska få plats */
     object-fit: contain;
-    background-color: var(--mobile-background);
+    background-color: var(--mobile-background-start); /* Använd en färg från paletten */
     border-bottom: 1px solid var(--mobile-border);
 }
 
@@ -333,10 +343,10 @@ p {
 }
 
 .project-card p {
-    font-size: 0.95em;
+    font-size: 0.98em; /* Något större text för korten för läsbarhet */
     color: var(--mobile-text-light);
     margin-bottom: var(--spacing-md-mobile);
-    text-align: left; /* Åter till vänsterjusterat för bättre läsbarhet på projektkort */
+    text-align: left;
 }
 
 .project-card .btn-primary {
