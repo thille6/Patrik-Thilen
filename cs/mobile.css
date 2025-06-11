@@ -434,20 +434,22 @@ p {
 .project-card .project-sections ul {
     list-style: disc;
     margin-left: var(--spacing-md-mobile);
-    padding-left: 0; /* Säkerställ att padding tas bort */
+    padding-left: var(--spacing-sm-mobile); /* Lägger till padding-left för att ge utrymme för listpunkten */
     margin-bottom: var(--spacing-sm-mobile);
 }
 
 .project-card .project-sections ul li {
     font-size: 0.95em;
     color: var(--mobile-text);
-    line-height: 1.5;
+    line-height: 1.6; /* Ökad radhöjd för bättre läsbarhet */
     margin-bottom: var(--spacing-xs-mobile); /* Mindre marginal mellan listobjekt */
     text-align: left;
+    padding-right: var(--spacing-sm-mobile); /* Lägg till lite padding till höger */
 }
 
 .project-card .project-sections ul li b {
     font-weight: 700;
+    display: inline;
 }
 
 .coming-soon {
