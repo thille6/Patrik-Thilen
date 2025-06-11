@@ -5,28 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kontakt – Patrik Thilén</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cs/style.css"/>
+  <!-- Desktop styles -->
+  <link rel="stylesheet" href="cs/style.css" media="(min-width: 768px)"/>
+  <!-- Mobile styles -->
+  <link rel="stylesheet" href="cs/mobile.css" media="(max-width: 767px)"/>
 </head>
 <body>
+  <!-- Skip to main content link -->
+  <a href="#main-content" class="skip-link">Hoppa till huvudinnehåll</a>
+
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Huvudnavigation">
     <div class="nav-left">Patrik Thilén</div>
-    <button class="hamburger" aria-label="Toggle navigation">
+    <button class="hamburger" aria-label="Öppna meny" aria-expanded="false" aria-controls="nav-menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-    <div class="nav-menu">
+    <div class="nav-menu" id="nav-menu">
       <ul class="nav-right">
         <li><a href="index.html" class="nav-link">Hem</a></li>
         <li><a href="about.html" class="nav-link">Om mig</a></li>
         <li><a href="projects.html" class="nav-link">Projekt</a></li>
         <li><a href="process.html" class="nav-link">Arbetssätt</a></li>
-        <li><a href="contact.html" class="nav-link active">Kontakt</a></li>
+        <li><a href="contact.html" class="nav-link active" aria-current="page">Kontakt</a></li>
       </ul>
     </div>
   </nav>
-  <main class="contact-main">
+  <main id="main-content" class="contact-main">
     <h1>Kontakta mig</h1>
     <p>Jag är alltid intresserad av spännande projekt och nya möjligheter. Hör gärna av dig!</p>
     <div class="contact-info">
@@ -40,7 +46,7 @@
       </div>
       <div>
         <strong>Sociala medier:</strong>
-        <a href="https://www.linkedin.com/in/patrik-thilen-119263169/" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/patrik-thilen-119263169/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
       <div>
         <strong>QR-kod:</strong><br>
