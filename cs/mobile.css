@@ -1,74 +1,73 @@
-/* mobile.css */
+/* mobile.css - Radikal omdesign för unikt mobilutseende och WCAG */
 
 :root {
-    /* Colors */
-    --primary-color: #6a0578; /* Deep Purple */
-    --secondary-color: #8c0578; /* Slightly lighter purple for accents */
-    --accent-color: #b30578; /* A brighter pink/purple for highlights */
-    --background-start: #e0f2f7; /* Light Blue */
-    --background-end: #fce4ec;   /* Light Pink */
-    --text-color: #333;
-    --text-light: #555;
-    --border-color: #ddd;
-    --white: #fff;
-    --black: #000;
+    /* Nya färger för mobil */
+    --mobile-primary: #4a67a5; /* lugnande blå */
+    --mobile-secondary: #7b97c4; /* mjukare gråblå för accenter */
+    --mobile-accent: #61b88e; /* vibrerande men tillgänglig grön */
+    --mobile-background: #f9f9f9; /* väldigt ljus grå/off-white */
+    --mobile-text: #333333; /* mörkgrå text */
+    --mobile-text-light: #666666; /* mellangrå text */
+    --mobile-border: #e0e0e0; /* ljusgrå kantlinje */
+    --mobile-white: #ffffff;
+    --mobile-black: #000000;
 
-    /* Typography */
+    /* Typografi */
     --font-family-sans: 'Inter', sans-serif;
-    --font-size-base: 16px;
-    --line-height-base: 1.6;
+    --font-size-base-mobile: 17px; /* något större basfont */
+    --line-height-base-mobile: 1.7; /* ökat radavstånd för läsbarhet */
+    --font-size-h1-mobile: 2.2em;
+    --font-size-h2-mobile: 1.6em;
+    --font-size-h3-mobile: 1.2em;
 
-    /* Spacing */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 32px;
-    --spacing-xl: 64px;
+    /* Avstånd och mellanrum */
+    --spacing-xs-mobile: 5px;
+    --spacing-sm-mobile: 10px;
+    --spacing-md-mobile: 20px;
+    --spacing-lg-mobile: 40px;
+    --spacing-xl-mobile: 80px;
 
     /* Border Radius */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
+    --border-radius-mobile: 6px;
 
     /* Box Shadow */
-    --box-shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    --box-shadow-md: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --box-shadow-mobile-sm: 0 2px 5px rgba(0,0,0,0.1);
+    --box-shadow-mobile-md: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-/* Base styles for mobile */
+/* Basstilar för mobil */
 body {
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-base);
-    color: var(--text-color);
-    background: linear-gradient(135deg, var(--background-start), var(--background-end));
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    padding-top: 60px; /* Space for fixed navbar */
+    font-size: var(--font-size-base-mobile);
+    line-height: var(--line-height-base-mobile);
+    color: var(--mobile-text);
+    background-color: var(--mobile-background); /* Enkel bakgrundsfärg */
+    padding-top: 60px; /* Utrymme för fast navbar */
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Accessibility: Skip to main content link */
+/* Tillgänglighet: Hoppa till huvudinnehåll-länk */
 .skip-link {
     position: absolute;
     top: -9999px;
     left: -9999px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: var(--spacing-sm);
+    background-color: var(--mobile-primary);
+    color: var(--mobile-white);
+    padding: var(--spacing-sm-mobile);
     z-index: 9999;
+    border-radius: var(--border-radius-mobile);
 }
 
 .skip-link:focus {
-    top: 0;
-    left: 0;
+    top: var(--spacing-sm-mobile);
+    left: var(--spacing-sm-mobile);
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    box-shadow: 0 0 0 3px var(--mobile-accent); /* Tydlig fokusindikator */
+    outline: none;
 }
 
 /* Navbar */
@@ -77,58 +76,67 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--mobile-primary);
+    color: var(--mobile-white);
+    padding: var(--spacing-sm-mobile) var(--spacing-md-mobile);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: var(--box-shadow-md);
+    box-shadow: var(--box-shadow-mobile-sm);
     z-index: 1000;
 }
 
 .nav-left {
     font-weight: 800;
-    font-size: 1.2em;
+    font-size: 1.3em; /* Större logotyp */
+    color: var(--mobile-white); /* Säkerställ kontrast */
 }
 
 .hamburger {
-    display: flex; /* Show hamburger on mobile */
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 30px;
-    height: 25px;
+    width: 35px; /* Större touch-yta */
+    height: 30px; /* Större touch-yta */
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
     z-index: 1001;
+    position: relative; /* För att hamburger-ikonen ska vara klickbar */
 }
 
 .hamburger .bar {
     width: 100%;
-    height: 3px;
-    background-color: var(--white);
-    border-radius: var(--border-radius-sm);
+    height: 4px; /* Tjockare bars */
+    background-color: var(--mobile-white);
+    border-radius: var(--spacing-xs-mobile);
     transition: all 0.3s ease-in-out;
 }
 
+/* Hamburger animation */
+.hamburger.open .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.hamburger.open .bar:nth-child(2) { opacity: 0; }
+.hamburger.open .bar:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+
 .nav-menu {
     position: fixed;
-    top: 60px; /* Below navbar */
+    top: 60px; /* Under navbar */
     right: 0;
-    width: 70%;
-    max-width: 300px;
-    height: 100%;
-    background-color: var(--primary-color);
+    width: 80%; /* Bredare meny för bättre läsbarhet */
+    max-width: 320px;
+    height: calc(100% - 60px); /* Fyller resten av skärmen */
+    background-color: var(--mobile-primary);
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    padding-top: var(--spacing-lg);
+    box-shadow: -4px 0 10px rgba(0,0,0,0.3);
+    padding-top: var(--spacing-lg-mobile);
     z-index: 999;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto; /* Aktivera scrollning om menyn blir lång */
 }
 
 .nav-menu.open {
@@ -145,90 +153,122 @@ body {
 
 .nav-menu .nav-link {
     display: block;
-    padding: var(--spacing-md);
-    color: var(--white);
+    padding: var(--spacing-md-mobile) var(--spacing-lg-mobile); /* Mer padding */
+    color: var(--mobile-white);
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.2em; /* Större länkar */
     font-weight: 600;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.2); /* Lätt avdelare */
+}
+
+.nav-menu .nav-link:last-child {
+    border-bottom: none;
 }
 
 .nav-menu .nav-link:hover,
 .nav-menu .nav-link.active {
-    background-color: var(--secondary-color);
+    background-color: var(--mobile-secondary);
+    color: var(--mobile-white);
 }
 
-/* Main Content Sections */
+/* Huvudinnehåll-sektioner */
 main {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-lg-mobile) var(--spacing-md-mobile);
     max-width: 100%;
-    overflow-x: hidden;
+    box-sizing: border-box; /* Se till att padding inte orsakar overflow */
 }
 
 h1,
 h2,
 h3 {
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-md);
+    color: var(--mobile-primary);
+    margin-bottom: var(--spacing-md-mobile);
     text-align: center;
+    line-height: 1.2;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: var(--font-size-h1-mobile);
     font-weight: 800;
+    margin-top: var(--spacing-md-mobile); /* Lägg till lite marginal uppåt */
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: var(--font-size-h2-mobile);
     font-weight: 700;
 }
 
-p {
-    margin-bottom: var(--spacing-md);
-    text-align: justify;
+h3 {
+    font-size: var(--font-size-h3-mobile);
+    font-weight: 600;
 }
 
-/* Home Page Specific */
+p {
+    margin-bottom: var(--spacing-md-mobile);
+    text-align: left; /* Justerat till vänster för bättre läsbarhet på mobil */
+    color: var(--mobile-text);
+}
+
+/* Hem-sida specifik */
 .home-main {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl-mobile);
 }
 
 .home-main h1 {
-    font-size: 2.5em;
-    margin-bottom: var(--spacing-sm);
+    font-size: 2.8em; /* Större för impact */
+    margin-bottom: var(--spacing-sm-mobile);
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
 }
 
 .subtitle {
-    font-size: 1.1em;
-    color: var(--text-light);
-    margin-bottom: var(--spacing-lg);
+    font-size: 1.2em; /* Tydligare subtitle */
+    color: var(--mobile-text-light);
+    margin-bottom: var(--spacing-lg-mobile);
+    padding: 0 var(--spacing-sm-mobile); /* Lätt padding för att undvika att texten går till kanten */
+    animation: fadeIn 0.8s ease-out forwards, textBrightness 2.5s infinite alternate;
+    animation-delay: 0.3s;
+    opacity: 0;
 }
 
 .btn-primary {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--white);
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-radius: var(--border-radius-md);
+    display: block; /* Gör knappen block-nivå */
+    width: 90%; /* Nästan full bredd */
+    max-width: 300px; /* Men inte för bred på större mobiler */
+    background-color: var(--mobile-accent);
+    color: var(--mobile-white);
+    padding: var(--spacing-md-mobile) var(--spacing-lg-mobile);
+    border-radius: var(--border-radius-mobile);
     text-decoration: none;
     font-weight: 700;
+    text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: var(--box-shadow-sm);
+    box-shadow: var(--box-shadow-mobile-sm);
+    margin: var(--spacing-md-mobile) auto; /* Centrera knappen */
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
 }
 
-.btn-primary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--box-shadow-md);
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--mobile-secondary);
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-mobile-md);
+    outline: none;
+    animation: pulse 0.8s infinite;
 }
 
-/* About Page */
+
+/* Om Mig-sida */
 .about-main {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-lg-mobile) var(--spacing-md-mobile);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,156 +276,155 @@ p {
 }
 
 .about-main img {
-    max-width: 150px;
+    max-width: 180px; /* Större bild */
+    height: auto;
     border-radius: 50%;
-    margin-bottom: var(--spacing-lg);
-    box-shadow: var(--box-shadow-sm);
+    margin-bottom: var(--spacing-lg-mobile);
+    box-shadow: var(--box-shadow-mobile-sm);
+    border: 4px solid var(--mobile-primary); /* Tydligare ram */
 }
 
-/* Projects Page */
+/* Projekt-sida */
 .projects-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-lg) var(--spacing-md);
+    grid-template-columns: 1fr; /* En kolumn */
+    gap: var(--spacing-lg-mobile);
+    padding: var(--spacing-lg-mobile) var(--spacing-md-mobile);
 }
 
 .project-card {
-    background-color: var(--white);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-sm);
+    background-color: var(--mobile-white);
+    border-radius: var(--border-radius-mobile);
+    box-shadow: var(--box-shadow-mobile-sm);
     overflow: hidden;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--mobile-text);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    border: 1px solid var(--mobile-border); /* Tydligare avgränsning */
 }
 
 .project-card img {
     width: 100%;
-    height: 200px;
+    height: 220px; /* Något högre bilder */
     object-fit: cover;
+    border-bottom: 1px solid var(--mobile-border); /* Linje under bild */
 }
 
 .project-card-content {
-    padding: var(--spacing-md);
+    padding: var(--spacing-md-mobile);
 }
 
 .project-card h3 {
-    font-size: 1.2em;
+    font-size: var(--font-size-h3-mobile);
     margin-top: 0;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm-mobile);
+    color: var(--mobile-primary);
 }
 
 .project-card p {
-    font-size: 0.9em;
-    color: var(--text-light);
+    font-size: 1em; /* Standardstorlek för brödtext */
+    color: var(--mobile-text-light);
+    margin-bottom: var(--spacing-md-mobile);
 }
 
 .project-card .btn-primary {
-    margin-top: var(--spacing-md);
+    margin-top: var(--spacing-sm-mobile); /* Mindre marginal uppåt */
+    width: auto; /* Återställ bredden för att passa innehållet */
+    padding: var(--spacing-sm-mobile) var(--spacing-md-mobile); /* Mindre padding */
+    font-size: 0.9em; /* Mindre text på knapparna */
+    max-width: none; /* Ta bort max-bredd */
+    display: inline-block; /* Gör den inline-block igen */
 }
 
 .coming-soon {
     text-align: center;
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-xl-mobile);
     font-size: 1.1em;
     font-weight: 600;
-    color: var(--text-color);
-    border-top: 1px solid var(--border-color);
-    padding-top: var(--spacing-lg);
+    color: var(--mobile-text);
+    border-top: 1px solid var(--mobile-border);
+    padding-top: var(--spacing-lg-mobile);
+    background-color: var(--mobile-white); /* Bakgrund för tydlighet */
+    padding-bottom: var(--spacing-lg-mobile); /* Extra padding nertill */
 }
 
-/* Process Page */
+/* Process-sida */
 .process-main .process-step {
-    background-color: var(--white);
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-sm);
-    margin-bottom: var(--spacing-lg);
+    background-color: var(--mobile-white);
+    padding: var(--spacing-md-mobile);
+    border-radius: var(--border-radius-mobile);
+    box-shadow: var(--box-shadow-mobile-sm);
+    margin-bottom: var(--spacing-lg-mobile);
+    border: 1px solid var(--mobile-border);
 }
 
 .process-main .process-step h2 {
     text-align: left;
-    font-size: 1.3em;
-    color: var(--primary-color);
+    font-size: var(--font-size-h2-mobile);
+    color: var(--mobile-primary);
 }
 
-/* Contact Page */
+/* Kontakt-sida */
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-md-mobile);
     text-align: center;
 }
 
 .contact-info div {
-    background-color: var(--white);
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-sm);
+    background-color: var(--mobile-white);
+    padding: var(--spacing-md-mobile);
+    border-radius: var(--border-radius-mobile);
+    box-shadow: var(--box-shadow-mobile-sm);
+    border: 1px solid var(--mobile-border);
 }
 
 .contact-info a {
-    color: var(--primary-color);
+    color: var(--mobile-primary);
     text-decoration: none;
     font-weight: 600;
 }
 
-.contact-info a:hover {
+.contact-info a:hover,
+.contact-info a:focus {
     text-decoration: underline;
+    outline: none;
+    color: var(--mobile-accent);
 }
 
 .qr-img {
-    max-width: 100px;
+    max-width: 120px;
     height: auto;
-    margin-top: var(--spacing-sm);
+    margin-top: var(--spacing-sm-mobile);
+    border: 1px solid var(--mobile-border);
+    border-radius: var(--border-radius-mobile);
 }
 
-/* General responsive adjustments */
+/* Allmänna responsiva justeringar */
 img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Fade-in animations (re-using from original style.css if applicable) */
+/* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes textBrightness {
     0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(0.5); }
+    50% { filter: brightness(0.7); }
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.03); }
     100% { transform: scale(1); }
-}
-
-.btn-primary {
-    animation: fadeIn 1s ease-out forwards;
-    animation-delay: 0.8s; /* After text fades in */
-    opacity: 0; /* Start hidden */
-}
-
-.home-main h1 {
-    animation: fadeIn 1s ease-out forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-}
-
-.subtitle {
-    animation: fadeIn 1s ease-out forwards, textBrightness 3s infinite alternate;
-    animation-delay: 0.5s;
-    opacity: 0;
-}
-
-.btn-primary:hover {
-    animation: pulse 1s infinite;
 } 
