@@ -357,28 +357,97 @@ p {
     padding: var(--spacing-md-mobile) var(--spacing-md-mobile);
 }
 
-.project-card h3 {
-    font-size: var(--font-size-h3-mobile);
+.project-card h2 {
+    font-size: 1.5em; /* Något mindre för mobil */
     margin-top: 0;
-    margin-bottom: var(--spacing-sm-mobile);
+    margin-bottom: var(--spacing-xs-mobile); /* Mindre marginal under rubrik */
     color: var(--mobile-primary);
     line-height: 1.3;
-}
-
-.project-card p {
-    font-size: 1em;
-    color: var(--mobile-text-light);
-    margin-bottom: var(--spacing-md-mobile);
     text-align: left;
 }
 
-.project-card .btn-primary {
-    margin-top: var(--spacing-sm-mobile);
-    width: auto;
-    padding: var(--spacing-sm-mobile) var(--spacing-md-mobile);
-    font-size: 0.9em;
-    max-width: none;
-    display: inline-block;
+.project-card .project-time {
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--mobile-text-light);
+    display: block; /* Sätt tiden på egen rad */
+    margin-top: var(--spacing-xs-mobile);
+}
+
+.project-card .subtitle {
+    font-size: 0.95em;
+    color: var(--mobile-text-light);
+    margin-bottom: var(--spacing-sm-mobile);
+    text-align: left;
+}
+
+.project-card p.project-desc {
+    font-size: 0.95em;
+    color: var(--mobile-text);
+    margin-bottom: var(--spacing-md-mobile);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.project-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs-mobile);
+    margin-bottom: var(--spacing-md-mobile);
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.project-card .tag {
+    background-color: var(--mobile-secondary);
+    color: var(--mobile-white);
+    padding: var(--spacing-xs-mobile) var(--spacing-sm-mobile);
+    border-radius: var(--border-radius-mobile);
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.project-card .project-sections {
+    width: 100%;
+    margin-top: var(--spacing-md-mobile);
+    border-top: 1px solid var(--mobile-border);
+    padding-top: var(--spacing-md-mobile);
+}
+
+.project-card .project-sections strong {
+    display: block; /* Få rubrikerna på egen rad */
+    font-size: 1.1em; /* Något större */
+    color: var(--mobile-primary);
+    margin-top: var(--spacing-sm-mobile); /* Marginal ovanför */
+    margin-bottom: var(--spacing-xs-mobile); /* Marginal under */
+    text-align: left;
+}
+
+.project-card .project-sections div {
+    font-size: 0.95em;
+    color: var(--mobile-text-light);
+    margin-bottom: var(--spacing-sm-mobile);
+    text-align: left;
+    line-height: 1.5;
+}
+
+.project-card .project-sections ul {
+    list-style: disc;
+    margin-left: var(--spacing-md-mobile);
+    padding-left: 0; /* Säkerställ att padding tas bort */
+    margin-bottom: var(--spacing-sm-mobile);
+}
+
+.project-card .project-sections ul li {
+    font-size: 0.95em;
+    color: var(--mobile-text);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs-mobile); /* Mindre marginal mellan listobjekt */
+    text-align: left;
+}
+
+.project-card .project-sections ul li b {
+    font-weight: 700;
 }
 
 .coming-soon {
